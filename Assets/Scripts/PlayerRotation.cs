@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerRotation : MonoBehaviour
 {
-    private float rotationSpeed = 500;
     //private float rotationAngle;
     private Vector3 mousePos;
     private Vector3 mouseWorld;
