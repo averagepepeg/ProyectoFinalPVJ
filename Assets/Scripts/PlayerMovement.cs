@@ -48,8 +48,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnFire(InputValue value)
     {
-        animator.SetBool("IsShooting", true);
-  
-       
+        //animator.SetBool("IsShooting", true);
     }
 }
