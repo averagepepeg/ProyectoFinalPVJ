@@ -47,14 +47,14 @@ ModelImporter:
       takeName: Armature Object|Armature ObjectFidget 01
       internalID: -1486194443821577700
       firstFrame: 0
-      lastFrame: 300
+      lastFrame: 61
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
