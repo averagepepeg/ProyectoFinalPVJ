@@ -55,6 +55,7 @@ public class FollowState : State
         Debug.Log("Estado Follow:Start");
         controller.agent.isStopped = false;
         controller.agent.velocity = new Vector3(controller.Speed,0f,controller.Speed);
+        controller.animator.SetBool("IsWalking", true);
     }
     public override void OnUpdate()
     {
@@ -69,5 +70,6 @@ public class FollowState : State
     public override void OnFinish()
     {
         Debug.Log("Estado Follow: Finish");
+        controller.animator.SetBool("IsWalking", false);
     }
 }
