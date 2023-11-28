@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,7 +35,7 @@ public class FollowState : State
                 isValid: () =>
                 {
                     float distance = Vector3.Distance(controller.Player.position, controller.transform.position);
-                    if (distance < controller.DistanceToAttack)
+                    if (distance <= controller.DistanceToAttack)
                     {
                         return true;
                     }
@@ -48,6 +49,7 @@ public class FollowState : State
                     return new AttackState(controller);
                 }
             );
+        Transitions.Add(transitionFollowToAttack);
     }
 
     public override void OnStart()
@@ -55,6 +57,7 @@ public class FollowState : State
         Debug.Log("Estado Follow:Start");
         controller.agent.isStopped = false;
         controller.agent.velocity = new Vector3(controller.Speed,0f,controller.Speed);
+        controller.animator.SetBool("IsWalking", true);
     }
     public override void OnUpdate()
     {
@@ -65,9 +68,12 @@ public class FollowState : State
 
         //Mover al enemigo
         controller.agent.destination = controller.Player.position;
+
+        Debug.Log(Vector3.Distance(controller.Player.position, controller.transform.position));
     }
     public override void OnFinish()
     {
         Debug.Log("Estado Follow: Finish");
+        controller.animator.SetBool("IsWalking", false);
     }
 }

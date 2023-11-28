@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class AttackState : State
@@ -36,6 +37,16 @@ public class AttackState : State
     }
     public override void OnUpdate()
     {
+        if ( controller.timer == 0 ) 
+        {
+            controller.animator.SetBool("IsAttacking", true);
+        }
+        controller.timer = controller.timer + Time.deltaTime;
+        if ( controller.timer >= 1.3 ) 
+        {
+            controller.animator.SetBool("IsAttacking", false);
+            controller.timer = 0;
+        }
     }
     public override void OnFinish()
     {

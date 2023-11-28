@@ -11,9 +11,10 @@ public class EnemyController : MonoBehaviour
     public FollowState FollowState;
     private State currentState;
 
+    public float timer = 0;
     public Transform Player;
     public float DistanceToFollow = 4f;
-    public float DistanceToAttack = 3f;
+    public float DistanceToAttack = 1f;
     public float Speed = 1f;
 
     public Rigidbody rb {  get; private set; }
