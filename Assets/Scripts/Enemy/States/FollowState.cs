@@ -54,7 +54,7 @@ public class FollowState : State
 
     public override void OnStart()
     {
-        Debug.Log("Estado Follow:Start");
+        //Debug.Log("Estado Follow:Start");
         controller.agent.isStopped = false;
         controller.agent.velocity = new Vector3(controller.Speed,0f,controller.Speed);
         controller.animator.SetBool("IsWalking", true);
@@ -69,7 +69,7 @@ public class FollowState : State
         //Mover al enemigo
         controller.agent.destination = controller.Player.position;
 
-        Debug.Log(Vector3.Distance(controller.Player.position, controller.transform.position));
+       // Debug.Log(Vector3.Distance(controller.Player.position, controller.transform.position));
     }
     public override void OnFinish()
     {

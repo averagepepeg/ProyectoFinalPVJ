@@ -30,8 +30,9 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("IsWalking", true);
         }
         characterController.Move(
-            transform.forward * direction.normalized.z * Time.deltaTime * MovementSpeed
-            + transform.right * direction.normalized.x * Time.deltaTime * MovementSpeed
+            //transform.forward * direction.normalized.z * Time.deltaTime * MovementSpeed
+            //+ transform.right * direction.normalized.x * Time.deltaTime * MovementSpeed
+            direction.normalized * Time.deltaTime * MovementSpeed
         );
 
     }

@@ -32,7 +32,7 @@ public class AttackState : State
 
     public override void OnStart()
     {
-        Debug.Log("Estado Attack:Start");
+        //Debug.Log("Estado Attack:Start");
         controller.agent.isStopped = true;
     }
     public override void OnUpdate()

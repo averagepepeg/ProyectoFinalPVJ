@@ -30,12 +30,12 @@ public class IdleState : State
     }
     public override void OnStart()
     {
-        Debug.Log("Estado Idle Start");
+        //Debug.Log("Estado Idle Start");
         controller.agent.isStopped = true;
     }
     public override void OnUpdate() { }
     public override void OnFinish()
     {
-        Debug.Log("Estado Idle Finish");
+        //Debug.Log("Estado Idle Finish");
     }
 }

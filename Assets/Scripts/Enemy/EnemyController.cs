@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem.XR.Haptics;
@@ -17,10 +18,15 @@ public class EnemyController : MonoBehaviour
     public float DistanceToAttack = 1f;
     public float Speed = 1f;
 
+    public float Health = 100f;
+    public float DamageRecived = 0f;
+
+
     public Rigidbody rb {  get; private set; }
     public Animator animator { get; private set; }
     public NavMeshAgent agent { get; private set; }
-    
+    public CapsuleCollider coll;
+    private GameObject self;
 
     
     private void Awake()
@@ -31,6 +37,8 @@ public class EnemyController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        coll = GetComponent<CapsuleCollider>();
+        self = this.gameObject;
 
         currentState = IdleState;
     }
@@ -39,6 +47,9 @@ public class EnemyController : MonoBehaviour
     {
         currentState.OnStart();
     }
+
+
+
 
     private void Update()
     {
@@ -53,6 +64,33 @@ public class EnemyController : MonoBehaviour
             }
         }
         currentState.OnUpdate();
+
+        if (Health <= 0f)
+        {
+            Destroy(self);
+        }
+        //Debug.Log(Health);
+        //Debug.Log(DamageRecived);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag.Equals("Bullet"))
+        {
+            DamageRecived = 35f;
+            Health -= DamageRecived;
+        }
+        if (collision.gameObject.tag == "Player")
+        {
+            var healthComponent = collision.gameObject.GetComponent<Health>();
+            if (healthComponent != null) 
+            {
+                healthComponent.TakeDamage(10);
+            }
+        }
+        //Debug.Log(collision.gameObject.tag);
+    }
+
+
 
 }
